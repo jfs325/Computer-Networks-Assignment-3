@@ -1,0 +1,13 @@
+
+
+Keep-alive implementation - Program runtime: 0.003114 seconds
+
+Closed-connection implementation - Program runtime: 0.001657 seconds
+
+It seems that keep-alive protocol takes longer on average than closed connection.
+
+This makes sense in the context of one http call. Closing the connection immediately
+and only making one attempt for one http call will be faster than trying to keep the connection alive.
+
+But if there many http calls happening, then constantly closing and reopening connections would be much
+slower than the keep-alive protocol which sends over the same connection, and would open and close connections much less.
